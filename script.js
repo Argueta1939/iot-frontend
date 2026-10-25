@@ -39,7 +39,7 @@ function setMode(mode) {
     }
 
     // Enviar el cambio de modo a la API REST (POST /modo)
-    fetch(`${API_URL}/modo`, {
+    fetch(`${https://iot-api-proyecto.onrender.com}/modo`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ modo: mode })
@@ -54,7 +54,7 @@ function sendMotorCommand(action) {
     if (currentMode !== 'manual') return; // Si no está en manual, no hace nada
 
     // Enviar comando a la API (POST /motor)
-    fetch(`${API_URL}/motor`, {
+    fetch(`${https://iot-api-proyecto.onrender.com}/motor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comando: action })
@@ -82,7 +82,7 @@ function updateMotorUI(state) {
 
 // 3. CONSULTAR LA DISTANCIA DEL SENSOR DESDE LA API CADA 2 SEGUNDOS
 function fetchSensorDistance() {
-    fetch(`${API_URL}/sensor`)
+    fetch(`${https://iot-api-proyecto.onrender.com}/sensor`)
     .then(res => res.json())
     .then(data => {
         updateDistanceDisplay(data.distancia);
