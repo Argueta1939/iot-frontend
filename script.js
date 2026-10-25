@@ -1,5 +1,5 @@
 // URL de tu API local en Node.js (cuando subas la API a la nube más adelante, cambiarás esta URL)
-const API_URL = "http://localhost:3000";
+const API_URL = "https://iot-api-proyecto.onrender.com";
 
 // ESTADO GLOBAL DEL FRONTEND
 let currentMode = 'auto'; // 'auto' o 'manual'
