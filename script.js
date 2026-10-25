@@ -1,4 +1,4 @@
-// URL de tu API local en Node.js (cuando subas la API a la nube más adelante, cambiarás esta URL)
+// URL de tu API en la nube (Render)
 const API_URL = "https://iot-api-proyecto.onrender.com";
 
 // ESTADO GLOBAL DEL FRONTEND
@@ -38,8 +38,8 @@ function setMode(mode) {
         manualBadge.className = "bg-emerald-100 text-emerald-700 text-xs px-3 py-1 rounded-full font-bold uppercase border border-emerald-300";
     }
 
-    // Enviar el cambio de modo a la API REST (POST /modo)
-    fetch(`${https://iot-api-proyecto.onrender.com}/modo`, {
+    // CORREGIDO: Usando la variable API_URL
+    fetch(`${API_URL}/modo`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ modo: mode })
@@ -53,8 +53,8 @@ function setMode(mode) {
 function sendMotorCommand(action) {
     if (currentMode !== 'manual') return; // Si no está en manual, no hace nada
 
-    // Enviar comando a la API (POST /motor)
-    fetch(`${https://iot-api-proyecto.onrender.com}/motor`, {
+    // CORREGIDO: Usando la variable API_URL
+    fetch(`${API_URL}/motor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comando: action })
@@ -82,13 +82,14 @@ function updateMotorUI(state) {
 
 // 3. CONSULTAR LA DISTANCIA DEL SENSOR DESDE LA API CADA 2 SEGUNDOS
 function fetchSensorDistance() {
-    fetch(`${https://iot-api-proyecto.onrender.com}/sensor`)
+    // CORREGIDO: Usando la variable API_URL
+    fetch(`${API_URL}/sensor`)
     .then(res => res.json())
     .then(data => {
         updateDistanceDisplay(data.distancia);
     })
     .catch(err => {
-        console.warn('Esperando conexión con la API local...');
+        console.warn('Esperando conexión con la API en la nube...');
     });
 }
 
